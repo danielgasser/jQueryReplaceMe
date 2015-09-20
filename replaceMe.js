@@ -5,7 +5,7 @@
     "use strict";
     $.fn.replaceMe = function (options) {
         var settings = $.extend({
-            textToReplace: 'text',
+            textToReplace: 'any_text',
             replaceWithText: '<span>othertext</span>',
             globally: true,
             excludedTags: [
