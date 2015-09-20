@@ -14,6 +14,7 @@ Include the latest jQuery library & then the script:
         });
     </body>
     
+In the example above the `p` tag is used. You may use any valid HTML-tag.
 ###Options:
 
 `textToReplace` (string) The text to look for. No HTML
