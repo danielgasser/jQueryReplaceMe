@@ -1,7 +1,7 @@
 # jQueryReplaceMe
 Replace any Text in the DOM with other text or HTML
 
-###How to use
+###How to use:
 Include the latest jQuery library & then the script:
 
     <head>
@@ -23,4 +23,19 @@ Include the latest jQuery library & then the script:
 `globally` (boolean) Set to true, if all occurrence of `textToReplace` should be searched
 
 `excludedTags` (array) The tags which should be ignored
+
+Options are added like this:
+
+    $(document).ready(function () {
+        $('p').replaceMe(
+            textToReplace: 'any_text',
+            replaceWithText: '<span>othertext</span>',
+            globally: true,
+            excludedTags: [
+                'img',
+                'span'
+            ]
+        );
+    });
+
 
