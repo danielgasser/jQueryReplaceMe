@@ -27,7 +27,7 @@ Include the latest jQuery library & then the script:
 Options are added like this:
 
     $(document).ready(function () {
-        $('p').replaceMe(
+        $('p').replaceMe({
             textToReplace: 'any_text',
             replaceWithText: '<span>othertext</span>',
             globally: true,
@@ -35,7 +35,7 @@ Options are added like this:
                 'img',
                 'span'
             ]
-        );
+        });
     });
 
 
