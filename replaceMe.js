@@ -13,12 +13,21 @@
                 'span'
             ]
         }, options);
-        $(this).html(function (index, text) {
-            if (!text.match(new RegExp(settings.excludedTags.join('|')))) {
+        $(this).contents().each(function (index, node) {
+            var text;
+            if(node.innerHTML !== undefined) {
+                text = node.innerHTML;
+            } else {
+                text = node.nodeValue
+            }
+            if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3) {
+                console.log(text)
+                console.log(node)
                 if(settings.globally) {
-                    return text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText);
+                    $(node).replaceWith(text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText));
+                } else {
+                    $(node).replaceWith(text.replace(new RegExp(settings.textToReplace), settings.replaceWithText));
                 }
-                return text.replace(new RegExp(settings.textToReplace), settings.replaceWithText);
             }
         });
     }
