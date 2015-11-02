@@ -1,5 +1,5 @@
 /**
- * Created by daniel on 9/20/15.
+ * Created by https://toesslab.ch on 9/20/15.
  */
 (function ($) {
     "use strict";
@@ -20,9 +20,9 @@
             } else {
                 text = node.nodeValue
             }
+            console.log(text)
+            console.log(node.localName)
             if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3) {
-                console.log(text)
-                console.log(node)
                 if(settings.globally) {
                     $(node).replaceWith(text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText));
                 } else {
