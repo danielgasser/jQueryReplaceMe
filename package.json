@@ -1,0 +1,31 @@
+{
+  "name": "jQueryReplaceMe",
+  "version": "1.0.0",
+  "description": "Replace any Text in the DOM with other text or HTML",
+  "author": "toesslab - websoultions <software@toesslab.ch>",
+  "contributors": [
+    {
+      "name":"Daniel Gasser",
+      "company": "toesslab - websoultions <software@toesslab.ch>"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.0"
+  },
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.10.0",
+    "grunt-contrib-watch": "~0.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielgasser/jQueryReplaceMe"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/danielgasser/jQueryReplaceMe/issues"
+  }
+}
