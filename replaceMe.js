@@ -14,15 +14,15 @@
             ]
         }, options);
         $(this).contents().each(function (index, node) {
-            var text;
+            var text,
+                excludedTag;
             if(node.innerHTML !== undefined) {
                 text = node.innerHTML;
             } else {
                 text = node.nodeValue
             }
-            console.log(text)
-            console.log(node.localName)
-            if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3) {
+            excludedTag = (node.localName === null) ? '' : node.localName;
+            if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTag.match(new RegExp(settings.excludedTags.join('|')))) {
                 if(settings.globally) {
                     $(node).replaceWith(text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText));
                 } else {

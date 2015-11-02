@@ -23,7 +23,7 @@ In the example above the `p` tag is used. You may use any valid HTML-tag.
 
 `globally` (boolean) If set to true all occurrence of `textToReplace` should be searched
 
-`excludedTags` (array) The tags which should be ignored
+`excludedTags` (array) HTML-tags which should be ignored
 
 Options are added like this:
 
