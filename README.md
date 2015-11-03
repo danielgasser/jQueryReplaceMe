@@ -17,13 +17,13 @@ Include the latest jQuery library & then the script:
 In the example above the `p` tag is used. You may use any valid HTML-tag.
 ###Options:
 
-*textToReplace* (string) The text to look for. No HTML allowed
+**textToReplace** (string) The text to look for. No HTML allowed
 
-*replaceWithText* (string or HTML) The text or HTML being replaced
+**replaceWithText** (string or HTML) The text or HTML being replaced
 
-*globally* (boolean) If set to true all occurrence of *textToReplace* should be searched
+**globally** (boolean) If set to true all occurrence of **textToReplace** should be searched
 
-*excludedTags* (array) HTML-tags which should be ignored
+**excludedTags** (array) HTML-tags which should be ignored
 
 Options are added like this:
 
