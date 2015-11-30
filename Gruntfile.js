@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 
-    var pjson = require('./package.json');
     grunt.initConfig({
         uglify: {
             options: {
@@ -8,19 +7,20 @@ module.exports = function(grunt) {
                 compress: true
             },
             build: {
-                src: pjson.name + '.js'
+                src: 'jQueryReplaceMe.js'
                 ,
-                dest: pjson.name + '.min.js'
+                dest: 'jQueryReplaceMe.min.js'
+            }
+        },
+        watch: {
+            js: {
+                files: ['jQueryReplaceMe.js'],
+                tasks: ['uglify']
             }
         }
-       // watch: {
-       //     files: ['<%= jshint.files %>'],
-       //     tasks: ['jshint']
-       // }
     });
-console.log('?', pjson.name);
     grunt.loadNpmTasks('grunt-contrib-uglify');
-   // grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['uglify']);
 

@@ -19,7 +19,7 @@
             if(node.innerHTML !== undefined) {
                 text = node.innerHTML;
             } else {
-                text = node.nodeValue
+                text = node.nodeValue;
             }
             excludedTags = (node.localName === null || node.localName === undefined) ? '' : node.localName;
             if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTags.match(new RegExp(settings.excludedTags.join('|')))) {
