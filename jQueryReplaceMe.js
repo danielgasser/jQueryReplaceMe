@@ -16,11 +16,8 @@
                 'STYLE',
                 'footer'
             ], excludedTags: [
-                'img',
-                'footer'
+                'img'
             ], excludedSelectors: [
-                    'animenu__nav__child',
-                'footer'
             ]
         }, options),
             checkExCludedSelectors = function (el) {
@@ -52,11 +49,19 @@
             //checkExCludedSelectors(excludedTags);
             if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTags.match(new RegExp(settings.excludedTags.join('|'))) && $.inArray(node.parentElement.nodeName, settings.excludedParentTags) === -1) {
                 if(settings.globally) {
-                    $(node).replaceWith(text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText));
+                    $(node).replaceWith(text.replaceAll(settings.textToReplace, settings.replaceWithText));
                 } else {
-                    $(node).replaceWith(text.replace(new RegExp(settings.textToReplace), settings.replaceWithText));
+                    $(node).replaceWith(text.replace(settings.textToReplace, settings.replaceWithText));
                 }
             }
         });
+    }
+    String.prototype.replaceAll = function(search, replace){
+        var string = this,
+            index;
+        while ((index = string.indexOf(search)) !== -1) {
+            string = string.replace(search, replace);
+        }
+        return string;
     }
 }(jQuery));
