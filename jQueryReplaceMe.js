@@ -8,11 +8,38 @@
             textToReplace: 'any_text',
             replaceWithText: '<span>othertext</span>',
             globally: true,
-            excludedTags: [
+            excludedParentTags: [
+                'HEAD',
+                'TITLE',
+                'LINK',
+                'SCRIPT',
+                'STYLE',
+                'footer'
+            ], excludedTags: [
                 'img',
-                'span'
+                'footer'
+            ], excludedSelectors: [
+                    'animenu__nav__child',
+                'footer'
             ]
-        }, options);
+        }, options),
+            checkExCludedSelectors = function (el) {
+                var counter = 0,
+                    _el = el;
+                $.each(settings.excludedSelectors, function (i, n) {
+                    if (($(_el).hasClass(n) || $(_el).is(n)) && $.inArray(n, settings.excludedTags) === -1) {
+                        settings.excludedTags.push(_el);
+                        $.each($(_el).children(), function (j, m) {
+                            if ($.inArray(m, settings.excludedTags) === -1) {
+                                settings.excludedTags.push(m.localName);
+                            }
+                        })
+                    }
+                });
+            };
+        if (settings.excludedTags.length === 0) {
+            settings.excludedTags.push('title')
+        }
         $(this).contents().each(function (index, node) {
             var text,
                 excludedTags;
@@ -21,8 +48,9 @@
             } else {
                 text = node.nodeValue;
             }
-            excludedTags = (node.localName === null || node.localName === undefined) ? '' : node.localName;
-            if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTags.match(new RegExp(settings.excludedTags.join('|')))) {
+            excludedTags = (node.localName === null || node.localName === undefined) ? node.nodeName : node.localName;
+            //checkExCludedSelectors(excludedTags);
+            if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTags.match(new RegExp(settings.excludedTags.join('|'))) && $.inArray(node.parentElement.nodeName, settings.excludedParentTags) === -1) {
                 if(settings.globally) {
                     $(node).replaceWith(text.replace(new RegExp(settings.textToReplace, 'g'), settings.replaceWithText));
                 } else {
