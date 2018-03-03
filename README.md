@@ -9,9 +9,11 @@ Include the latest jQuery library & then the script:
     <script src="/your-js-folder/replaceMe/replaceMe.js"></script>
     </head>
     <body>
+    <script>
         $(document).ready(function () {
             $('p').replaceMe();
         });
+        </script>
     </body>
     
 In the example above the `p` tag is used. You may use any valid HTML-tag.
