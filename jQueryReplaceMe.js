@@ -16,23 +16,31 @@
                 'STYLE',
                 'footer'
             ], excludedTags: [
-                'img'
+                'img',
+
             ], excludedSelectors: [
             ]
         }, options),
             checkExCludedSelectors = function (el) {
-                var counter = 0,
-                    _el = el;
-                $.each(settings.excludedSelectors, function (i, n) {
-                    if (($(_el).hasClass(n) || $(_el).is(n)) && $.inArray(n, settings.excludedTags) === -1) {
+                var _el = el,
+                    index,
+                    childIndex,
+                    entry,
+                    childEntry,
+                    element;
+                for (index = 0; index < settings.excludedSelectors.length; index += 1) {
+                    entry = settings.excludedSelectors[index];
+                    if (($(_el).hasClass(entry) || $(_el).is(entry)) && $.inArray(entry, settings.excludedTags) === -1) {
                         settings.excludedTags.push(_el);
-                        $.each($(_el).children(), function (j, m) {
-                            if ($.inArray(m, settings.excludedTags) === -1) {
-                                settings.excludedTags.push(m.localName);
+                        element = $(_el).children();
+                        for (childIndex = 0; childIndex < element.length; childIndex += 1) {
+                            childEntry = element[childIndex];
+                            if ($.inArray(childEntry, settings.excludedTags) === -1) {
+                                settings.excludedTags.push(childEntry.localName);
                             }
-                        })
+                        }
                     }
-                });
+                }
             };
         if (settings.excludedTags.length === 0) {
             settings.excludedTags.push('title')
@@ -40,13 +48,22 @@
         $(this).contents().each(function (index, node) {
             var text,
                 excludedTags;
-            if(node.innerHTML !== undefined) {
-                text = node.innerHTML;
-            } else {
-                text = node.nodeValue;
+            console.log(node)
+            switch (node) {
+                case node.innerHTML !== undefined:
+                    text = node.innerHTML;
+                    break;
+                case node.wholeText !== undefined:
+                    text = node.wholeText;
+                    break;
+                case node.textContent !== undefined:
+                    text = node.textContent;
+                    break;
             }
+            text = (text === undefined) ? '' : text;
             excludedTags = (node.localName === null || node.localName === undefined) ? node.nodeName : node.localName;
-            //checkExCludedSelectors(excludedTags);
+            checkExCludedSelectors(excludedTags);
+            console.log(text)
             if (text.match(new RegExp(settings.textToReplace, 'g')) && node.nodeType === 3 && !excludedTags.match(new RegExp(settings.excludedTags.join('|'))) && $.inArray(node.parentElement.nodeName, settings.excludedParentTags) === -1) {
                 if(settings.globally) {
                     $(node).replaceWith(text.replaceAll(settings.textToReplace, settings.replaceWithText));

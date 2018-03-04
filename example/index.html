@@ -9,7 +9,7 @@
 <script src="../jQueryReplaceMe.js"></script>
 </head>
 <body>
-<div>
+<div id="test">
     <h1>Enterprise Extensions</h1>
     <p>These add-ons are sold and supported by PortlandLabs and extend the trusted free core to meet the needs of a
         larger organization.</p>
@@ -18,7 +18,7 @@
         intuitive editing experience of concrete5.</p>
     <ul>
         <li>A simple addition to any existing concrete5 website.</li>
-        <li>It can provide multiple workflows, for handling a variety of business practices.</li>
+        <li>It can provide multiple workflows and for handling a variety of business practices.</li>
         <li>It enables application of workflows to any content change or action.</li>
         <li>Can allow viewing of complete audit trails for accountability.</li>
         <li>Includes approval batches for launching entire sections at once.</li>
@@ -40,16 +40,18 @@
     <p>The HTML exporter takes a complete copy of your website’s latest content and creates a set of flat HTML files and
         related assets that can be hosted on any web server. It even scans your website to warn you for blocks that
         require PHP or MySQL to work. </p>
+    <p>
     <ul>
         <li>Useful for reducing CPU load on high traffic sites.</li>
-        <li>Enjoy stronger security by not running PHP or MySQL on your live webserver.</li>
-        <li>Use content delivery networks (CDN) to store assets closer to an international audience.</li>
+        <li>Enjoy stronger and security by not running PHP or MySQL on your live webserver.</li>
+        <li>Use content delivery networks (CDN) to store assets and closer to an international audience.</li>
         <li>Create emergency failsafe snapshots of your website for disaster planning.</li>
     </ul>
+    </p>
 </div>
 <script>
     $(document).ready(function () {
-        $('p').replaceMe({
+        $('div').replaceMe({
             textToReplace: 'and',
             replaceWithText: '<span style="color: red"><i>AND</i></span>',
             globally: true,
