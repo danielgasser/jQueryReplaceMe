@@ -19,10 +19,11 @@
                     'SCRIPT',
                     'STYLE',
                     'footer'
-                ], excludedTags: [
-                    'img',
-
-                ], excludedSelectors: []
+                ],
+                excludedTags: [
+                    'img'
+                ],
+                excludedSelectors: []
             }, options),
             checkExCludedSelectors = function (el) {
                 var _el = el,
