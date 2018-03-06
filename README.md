@@ -1,7 +1,7 @@
 # jQueryReplaceMe
 Replace any Text in the DOM with other text or HTML
 
-###How to use:
+### How to use:
 Include the latest jQuery library & then the script:
 
     <head>
@@ -16,8 +16,9 @@ Include the latest jQuery library & then the script:
         </script>
     </body>
     
-In the example above the `p` tag is used. You may use any valid HTML-tag.
-###Options:
+In the example above the `p` tag is used. You may use any valid HTML-tag or jQuery selector.
+
+### Options:
 
 **textToReplace** (string) The text to look for. No HTML allowed
 
